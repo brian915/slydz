@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 10 — section-break</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="bg-text-primary">
+    <div class="label-overlay" style="color: var(--color-divider);">Template: <strong style="color: var(--color-bg-primary);">section-break</strong></div>
+
+    <div class="slide active" style="background-color: var(--color-text-primary); justify-content: center; align-items: center;">
+        <div class="editorial-grid" style="width: 100%;">
+            <div class="content-standard">
+                <span class="label-text" style="color: var(--color-accent-main);">Part Two</span>
+                <h2 class="header-font text-7xl font-black" style="color: var(--color-bg-primary); line-height: 1.1;">
+                    Lorem Ipsum<br />Section Title
+                </h2>
+                <div style="width: 4rem; height: 4px; background: var(--color-accent-main); margin-top: 2rem;"></div>
+            </div>
+        </div>
+        <aside class="notes">Signal to the audience that we are moving into a new chapter.</aside>
+    </div>
+
+    <div class="slide-nav">
+        <button id="prevBtn" class="btn btn-outline-light"><i class="ph ph-caret-left"></i> Previous</button>
+        <button id="nextBtn" class="btn btn-primary">Next <i class="ph ph-caret-right"></i></button>
+    </div>
+
+    <script src="presentation_slide_config.js"></script>
+    <script src="slide_controls.js"></script>
+    <style>
+        .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; font-family: 'Inter', sans-serif; }
+        aside.notes { display: none; }
+    </style>
+</body>
+</html>

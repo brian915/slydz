@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 14 — outro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="bg-primary">
+    <div class="label-overlay">Template: <strong>outro</strong></div>
+
+    <div class="slide active">
+        <div class="editorial-grid" style="align-items: center;">
+            <div style="grid-column: 1 / span 7;">
+                <h2 class="header-font text-7xl font-black text-primary mb-4">Thank<br />You.</h2>
+                <p class="text-accent-main font-bold text-2xl mb-8">Questions & Discussion</p>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem; color: var(--color-text-primary); font-size: 1rem;">
+                    <span><i class="ph ph-envelope" style="color: var(--color-accent-main);"></i> &nbsp;jane@example.com</span>
+                    <span><i class="ph ph-globe" style="color: var(--color-accent-main);"></i> &nbsp;janedoe.com</span>
+                    <span><i class="ph ph-linkedin-logo" style="color: var(--color-accent-main);"></i> &nbsp;/in/janedoe</span>
+                </div>
+                <div style="margin-top: 2.5rem;">
+                    <a href="#" class="btn btn-primary" style="text-decoration: none; display: inline-block;">
+                        <i class="ph ph-download-simple"></i> Download Slides
+                    </a>
+                </div>
+            </div>
+            <div style="grid-column: 9 / span 4; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                <div style="width: 180px; height: 180px; background-color: var(--color-base-subtle-1); border: 2px solid var(--color-divider); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem;">
+                    <i class="ph ph-qr-code" style="font-size: 4rem; color: var(--color-text-primary);"></i>
+                    <span style="font-size: 0.75rem; color: var(--color-divider); text-transform: uppercase; letter-spacing: 0.08em;">QR Placeholder</span>
+                </div>
+                <span style="font-size: 0.85rem; color: var(--color-divider);">Scan for slides</span>
+            </div>
+        </div>
+        <aside class="notes">Open the floor for questions. Have your contact info on screen while people filter out.</aside>
+    </div>
+
+    <div class="slide-nav">
+        <button id="prevBtn" class="btn btn-outline"><i class="ph ph-caret-left"></i> Previous</button>
+        <button id="nextBtn" class="btn btn-primary">Next <i class="ph ph-caret-right"></i></button>
+    </div>
+
+    <script src="presentation_slide_config.js"></script>
+    <script src="slide_controls.js"></script>
+    <style>
+        .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-divider); font-family: 'Inter', sans-serif; }
+        aside.notes { display: none; }
+    </style>
+</body>
+</html>

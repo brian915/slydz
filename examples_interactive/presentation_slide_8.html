@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 8 — centered-statement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="bg-primary">
+    <div class="label-overlay">Template: <strong>centered-statement</strong></div>
+
+    <div class="slide active" style="justify-content: center; align-items: center; text-align: center;">
+        <div class="editorial-grid" style="width: 100%;">
+            <div class="content-standard" style="text-align: center;">
+                <p class="header-font text-6xl font-black text-primary" style="line-height: 1.2;">
+                    Everything changes<br />when you change<br /><span style="color: var(--color-accent-main);">the question.</span>
+                </p>
+            </div>
+        </div>
+        <aside class="notes">Pause here. Let it land before advancing.</aside>
+    </div>
+
+    <div class="slide-nav">
+        <button id="prevBtn" class="btn btn-outline"><i class="ph ph-caret-left"></i> Previous</button>
+        <button id="nextBtn" class="btn btn-primary">Next <i class="ph ph-caret-right"></i></button>
+    </div>
+
+    <script src="presentation_slide_config.js"></script>
+    <script src="slide_engine.js"></script>
+    <style>
+        .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-divider); font-family: 'Inter', sans-serif; }
+        aside.notes { display: none; }
+    </style>
+</body>
+</html>

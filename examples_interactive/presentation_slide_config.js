@@ -1,0 +1,1 @@
+const DECK_TOTAL_SLIDES = 25;

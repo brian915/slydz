@@ -1,0 +1,182 @@
+/* ============================================================
+   DOCUMENTATION-SPECIFIC STYLES
+   
+   This file contains styles used only in documentation pages.
+   It works alongside main.css and should be loaded after it.
+   
+   Usage:
+   <link rel="stylesheet" href="main.css">
+   <link rel="stylesheet" href="documentation.css">
+   ============================================================ */
+
+/* ---------------------------------------------------- */
+/*           GRID VISUALIZATION STYLES                  */
+/* ---------------------------------------------------- */
+
+/* Grid overlay color for visualization */
+:root {
+    --grid-overlay-color: rgba(78, 0, 142, 0.05); /* Light Purple for visualization */
+}
+
+/* Visualizing the grid columns for documentation.
+   This class is used for demonstration boxes showing grid structure. */
+.grid-visualizer-col {
+    background-color: var(--grid-overlay-color);
+    border: 1px dashed var(--color-accent-main);
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--color-accent-main);
+}
+
+/* ---------------------------------------------------- */
+/*           SPACING DEMONSTRATION STYLES               */
+/* ---------------------------------------------------- */
+
+/* Utility for spacing swatches in documentation */
+.spacing-swatch {
+    background-color: var(--color-accent-main);
+    height: 2rem;
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+/* ---------------------------------------------------- */
+/*           CODE BLOCK STYLES                          */
+/* ---------------------------------------------------- */
+
+/* Code blocks for showing CSS/HTML examples */
+.code-block {
+    background-color: #f5f5f5;
+    border: 1px solid var(--color-divider);
+    border-radius: 4px;
+    padding: 1rem;
+    margin-top: 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    overflow-x: auto;
+}
+
+/* ---------------------------------------------------- */
+/*           DOCUMENTATION TABLE STYLES                 */
+/* ---------------------------------------------------- */
+
+/* Enhanced table styles for technical documentation */
+.docs-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.docs-table thead {
+    background-color: var(--color-base-subtle-2);
+}
+
+.docs-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid var(--color-divider);
+}
+
+.docs-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-divider);
+}
+
+.docs-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ---------------------------------------------------- */
+/*           CALLOUT BOXES                              */
+/* ---------------------------------------------------- */
+
+/* Informational callout boxes for documentation */
+.docs-callout {
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--color-accent-main);
+}
+
+.docs-callout-info {
+    background-color: var(--color-base-subtle-1);
+    border-left-color: var(--color-accent-main);
+}
+
+.docs-callout-warning {
+    background-color: #FFF4E6;
+    border-left-color: var(--color-utility-alert);
+}
+
+.docs-callout-success {
+    background-color: #E6F4F1;
+    border-left-color: var(--color-utility-confirmation);
+}
+
+/* ---------------------------------------------------- */
+/*           DOCUMENTATION-SPECIFIC UTILITIES           */
+/* ---------------------------------------------------- */
+
+/* Monospace text for code references in prose */
+.code-inline {
+    font-family: 'Courier New', monospace;
+    background-color: var(--color-base-subtle-1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+/* Highlight box for important notes */
+.docs-highlight {
+    background-color: var(--color-base-subtle-2);
+    padding: 1rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+}
+
+/* Section divider for documentation pages */
+.docs-section-divider {
+    height: 1px;
+    background-color: var(--color-divider);
+    margin: 3rem 0;
+}
+
+section ol {
+    font-family: 'Nexa', 'Inter', sans-serif;
+    color: var(--color-text-primary);
+    line-height: 1.8;
+    padding-left: 2rem;
+    list-style-type: upper-roman;
+}
+
+li {
+    font-size: 1.125rem; /* 18px  */
+        margin-bottom: 0.5rem;
+}
+
+section ol ol {
+    padding-left: 2rem;
+    list-style-type: upper-alpha; /* A, B, C... */
+}
+
+section ol ol ol {
+    padding-left: 2rem;
+    list-style-type: decimal; /* 1, 2, 3... */
+}
+
+section ol ol ol ol {
+    padding-left: 2rem;
+    list-style-type: lower-alpha; /* a, b, c... */
+}
+
+section ol ol ol ol ol {
+    padding-left: 2rem;
+    list-style-type: lower-roman; /* i, ii, iii... */
+}

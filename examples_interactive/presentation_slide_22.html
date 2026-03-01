@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 22 — background: tiled</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="label-overlay" style="color: rgba(255,255,255,0.5);">Template: <strong style="color: rgba(255,255,255,0.8);">background: tiled</strong></div>
+
+    <div class="slide active" style="
+        background-color: var(--color-text-primary);
+        background-image: radial-gradient(circle, rgba(78,0,142,0.4) 1px, transparent 1px);
+        background-size: 28px 28px;
+        justify-content: center; align-items: center; text-align: center;">
+        <div class="editorial-grid" style="width: 100%;">
+            <div class="content-standard" style="text-align: center;">
+                <h2 class="header-font text-6xl font-black" style="color: var(--color-bg-primary); line-height: 1.1; margin-bottom: 1.5rem;">
+                    Tiled Background
+                </h2>
+                <p style="color: rgba(255,255,255,0.6); font-size: 1rem; font-style: italic;">
+                    Pure CSS: background-image + background-size + background-repeat.<br>
+                    No images. No libraries.
+                </p>
+            </div>
+        </div>
+        <aside class="notes">The dot grid is a radial-gradient repeated via background-size. Swap the gradient for any SVG or image to tile a custom pattern.</aside>
+    </div>
+
+    <div class="slide-nav">
+        <button id="prevBtn" class="btn btn-outline-light"><i class="ph ph-caret-left"></i> Previous</button>
+        <button id="nextBtn" class="btn btn-primary">Next <i class="ph ph-caret-right"></i></button>
+    </div>
+
+    <script src="presentation_slide_config.js"></script>
+    <script src="slide_engine.js"></script>
+    <style>
+        .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; font-family: 'Inter', sans-serif; }
+        aside.notes { display: none; }
+    </style>
+</body>
+</html>

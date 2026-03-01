@@ -1,0 +1,262 @@
+/* ---------------------------------------------------- */
+/*             DEFINITIVE COLOR ROLES                   */
+/* ---------------------------------------------------- */
+:root {
+    /* Hex values from color_role_table.html */
+    --color-text-primary: #1F2A44; /* Primary Text & Containers (Deep Navy) */
+    --color-accent-main: #4E008E;  /* Main Accent (Vivid) (Medium Purple) */
+    --color-utility-alert: #A6192E; /* Secondary Accent / Alert Utility ("Crimson") */
+    --color-utility-confirmation: #006F62; /* Secondary Accent / Confirmation Utility ("Forest Green") */
+    --color-divider: #B0B7BE; /* Divider & Secondary Text (Pearl Blue) */
+    --color-base-subtle-1: #DDE5ED; /* Subtle Base 1 ("Periwinkle") */
+    --color-base-subtle-2: #E0DDEC; /* Subtle Base 2 ("Lilac") */
+    --color-accent-light: #B9D9EB;  /* Light Accent ("Robin's Egg") */
+    --color-bg-primary: #F7F6F2;   /* Primary Background (Stalactite) */
+}
+
+/* ---------------------------------------------------- */
+/*             FUNCTIONAL ABSTRACTION CLASSES           */
+/* ---------------------------------------------------- */
+
+/* Backgrounds */
+.bg-primary { background-color: var(--color-bg-primary); }
+.bg-text-primary { background-color: var(--color-text-primary); }
+.bg-accent-main { background-color: var(--color-accent-main); }
+.bg-utility-alert { background-color: var(--color-utility-alert); }
+.bg-utility-confirmation { background-color: var(--color-utility-confirmation); }
+.bg-base-subtle-1 { background-color: var(--color-base-subtle-1); }
+.bg-base-subtle-2 { background-color: var(--color-base-subtle-2); }
+.bg-accent-light { background-color: var(--color-accent-light); }
+.bg-divider { background-color: var(--color-divider); }
+
+/* Text Colors */
+.text-primary { color: var(--color-text-primary); }
+.text-accent-main { color: var(--color-accent-main); }
+.text-utility-alert { color: var(--color-utility-alert); }
+.text-divider { color: var(--color-divider); }
+.text-accent-light { color: var(--color-accent-light); }
+.text-on-dark { color: var(--color-bg-primary); } /* For text on #1F2A44 */
+.text-on-light { color: var(--color-text-primary); } /* For text on light backgrounds */
+
+/* Borders */
+.border-accent-main { border-color: var(--color-accent-main); }
+.border-divider { border-color: var(--color-divider); }
+
+/* ---------------------------------------------------- */
+/*               TYPOGRAPHY DEFINITIONS                 */
+/* ---------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700;900&display=swap');
+@import url("https://use.typekit.net/qtt2mur.css");
+
+body {
+    font-family: 'Nexa', 'Inter', sans-serif;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    margin: 0;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.header-font {
+    font-family: 'Playfair Display', Georgia, serif; /* Headlines */
+}
+
+.label-text {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-divider);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* ---------------------------------------------------- */
+/* II. PRESENTATION ENGINE STYLES                       */
+/* ---------------------------------------------------- */
+.slide {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    padding: 4rem;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.slide.active { 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+}
+
+.slide-nav {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 100;
+}
+
+/* ---------------------------------------------------- */
+/*                WEBSITE LAYOUT UTILITIES              */
+/* ---------------------------------------------------- */
+.layout-section { 
+    display: none; 
+}
+
+.layout-section.active { 
+    display: block; 
+}
+
+.btn-brand {
+    padding: 0.75rem 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+}
+
+/* Content width utilities */
+.content-full {
+    grid-column: span 12;
+}
+
+.content-standard {
+    grid-column: 3 / span 8;
+}
+
+.content-narrow {
+    grid-column: 4 / span 6;
+}
+
+/* ---------------------------------------------------- */
+/*                BUTTON SYSTEM                         */
+/* ---------------------------------------------------- */
+.btn {
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Button Variants */
+.btn-primary { background-color: var(--color-accent-main); color: white; }
+.btn-secondary { background-color: var(--color-accent-light); color: var(--color-text-primary); }
+.btn-success { background-color: var(--color-utility-confirmation); color: white; }
+.btn-alert { background-color: var(--color-utility-alert); color: white; }
+
+.btn-outline { 
+    background-color: transparent; 
+    border-color: var(--color-divider); 
+    color: var(--color-text-primary); 
+}
+
+.btn-outline-light { 
+    background-color: transparent; 
+    border-color: var(--color-bg-primary); 
+    color: var(--color-bg-primary); 
+}
+
+/* Button Container Styles */
+.container-box {
+    padding: 60px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    border: 1px solid var(--color-divider);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.bg-navy { background-color: var(--color-text-primary); }
+.bg-stalactite { background-color: var(--color-bg-primary); }
+.bg-lilac { background-color: var(--color-base-subtle-2); }
+
+/* ---------------------------------------------------- */
+/*        CONTRAST & LEGIBILITY TEST BLOCKS             */
+/* ---------------------------------------------------- */
+.test-block {
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    border: 1px solid #B0B7BE;
+}
+
+/* Contrast Combinations */
+.c1 { background-color: var(--color-text-primary); color: var(--color-bg-primary); }
+.c2 { background-color: var(--color-text-primary); color: var(--color-accent-light); }
+.c3 { background-color: var(--color-base-subtle-1); color: var(--color-text-primary); }
+.c4 { background-color: var(--color-base-subtle-2); color: var(--color-accent-main); }
+.c5 { background-color: var(--color-bg-primary); color: var(--color-utility-confirmation); }
+.c6 { background-color: var(--color-bg-primary); color: var(--color-utility-alert); }
+.c7 { background-color: var(--color-bg-primary); color: var(--color-divider); }
+
+/* ---------------------------------------------------- */
+/*        FRAGMENT / PROGRESSIVE REVEAL SYSTEM          */
+/* ---------------------------------------------------- */
+.fragment {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.fragment.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.fragment.gone {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Highlight variants — start visible, gain color on .visible */
+.fragment.highlight {
+    opacity: 1;
+    transform: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+.fragment.highlight.visible      { color: var(--color-accent-main); }
+.fragment.highlight-alert {
+    opacity: 1;
+    transform: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+.fragment.highlight-alert.visible { color: var(--color-utility-alert); }
+.fragment.highlight-green {
+    opacity: 1;
+    transform: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+.fragment.highlight-green.visible { color: var(--color-utility-confirmation); }
+
+/* Scale variants */
+.fragment.scale-up   { opacity: 0; transform: scale(1);   transition: opacity 0.3s ease, transform 0.4s ease; }
+.fragment.scale-up.visible   { opacity: 1; transform: scale(1.4); }
+.fragment.scale-down { opacity: 0; transform: scale(1);   transition: opacity 0.3s ease, transform 0.4s ease; }
+.fragment.scale-down.visible { opacity: 1; transform: scale(0.6); }
+
+/* Layout utilities */
+.hstack { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+.vstack { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; }
