@@ -26,14 +26,16 @@ function collect_fragments() {
 function advance_fragment() {
     // Returns true if a fragment was advanced, false if all done
     if (fragment_index >= fragments.length - 1) return false;
-    fragment_index++;
-    const f = fragments[fragment_index];
-    if (f.classList.contains('fade-in-then-out') && f.classList.contains('visible')) {
-        f.classList.remove('visible');
-        f.classList.add('gone');
-    } else {
-        f.classList.add('visible');
+    // Dismiss current fragment if fade-in-then-out
+    if (fragment_index >= 0) {
+        const current = fragments[fragment_index];
+        if (current.classList.contains('fade-in-then-out')) {
+            current.classList.remove('visible');
+            current.classList.add('gone');
+        }
     }
+    fragment_index++;
+    fragments[fragment_index].classList.add('visible');
     return true;
 }
 
@@ -248,10 +250,20 @@ if (active_slide && active_slide.dataset.state) {
 function autofit_text() {
     const targets = document.querySelectorAll('.autofit-text');
     targets.forEach(function(el) {
-        const parent_width = el.parentElement.offsetWidth;
+        // Measure available width from the slide container, not the immediate parent.
+        // el.parentElement.offsetWidth can return 0 for flex items with width:100%
+        // in certain browsers (notably Firefox on file://).
+        const slide = el.closest('.slide');
+        const cs = window.getComputedStyle(slide);
+        const available = slide.clientWidth
+            - parseFloat(cs.paddingLeft)
+            - parseFloat(cs.paddingRight);
+        if (available <= 0) return;
+        // inline-block shrinks to content width so scrollWidth reflects text, not parent
+        el.style.display = 'inline-block';
         let size = 10;
         el.style.fontSize = size + 'px';
-        while (el.scrollWidth < parent_width && size < 300) {
+        while (el.scrollWidth < available && size < 300) {
             size++;
             el.style.fontSize = size + 'px';
         }
@@ -261,4 +273,10 @@ function autofit_text() {
 
 // Run immediately — script is at bottom of body so DOM is ready
 collect_fragments();
-autofit_text();
+// Defer autofit: window.onload guarantees fonts + layout; double rAF ensures
+// the browser has committed the post-load reflow before we measure.
+window.addEventListener('load', function() {
+    requestAnimationFrame(function() {
+        requestAnimationFrame(autofit_text);
+    });
+});

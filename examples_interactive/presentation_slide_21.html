@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../source_files/themes/steady.css">
 </head>
 <body class="bg-primary">
     <div class="label-overlay">Template: <strong>layout: stack</strong> &nbsp;·&nbsp; press <kbd>→</kbd> to layer</div>
@@ -16,16 +17,16 @@
             <div class="content-standard" style="text-align: center;">
                 <span class="label-text">Overlapping Layers</span>
                 <h2 class="header-font text-4xl font-black text-primary mb-10">Build Up a Diagram</h2>
-                <!-- stack: all children overlap in same position -->
-                <div class="vstack" style="position: relative; height: 220px; margin: 0 auto; max-width: 480px;">
-                    <div style="position: absolute; inset: 0; border: 2px dashed var(--color-divider); border-radius: 8px; display: flex; align-items: center; justify-content: center; background: var(--color-base-subtle-1);">
-                        <p style="color: var(--color-divider); font-size: 1rem;">Base layer — always visible</p>
+                <!-- stack: concentric layers, each fragment adds a ring -->
+                <div style="position: relative; height: 260px; margin: 0 auto; max-width: 480px;">
+                    <div style="position: absolute; inset: 0; border: 2px dashed var(--color-divider); border-radius: 8px; background: var(--color-base-subtle-1);">
+                        <span style="position: absolute; top: 10px; left: 14px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-divider);">Base layer</span>
                     </div>
-                    <div class="fragment" style="position: absolute; inset: 20px; border: 2px solid var(--color-accent-main); border-radius: 6px; display: flex; align-items: center; justify-content: center; background: rgba(78,0,142,0.08); transition: opacity 0.4s;">
-                        <p style="color: var(--color-accent-main); font-weight: 700;">Layer 2 — revealed on first advance</p>
+                    <div class="fragment" style="position: absolute; inset: 28px; border: 2px solid var(--color-accent-main); border-radius: 6px; background: rgba(75,64,249,0.06);">
+                        <span style="position: absolute; top: 10px; left: 14px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-accent-main);">Layer 2</span>
                     </div>
-                    <div class="fragment" style="position: absolute; inset: 40px; border: 2px solid var(--color-utility-confirmation); border-radius: 4px; display: flex; align-items: center; justify-content: center; background: rgba(0,111,98,0.1); transition: opacity 0.4s;">
-                        <p style="color: var(--color-utility-confirmation); font-weight: 700;">Layer 3 — revealed on second</p>
+                    <div class="fragment" style="position: absolute; inset: 56px; border: 2px solid var(--color-utility-confirmation); border-radius: 4px; background: rgba(0,139,139,0.06);">
+                        <span style="position: absolute; top: 10px; left: 14px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-utility-confirmation);">Layer 3</span>
                     </div>
                 </div>
             </div>
