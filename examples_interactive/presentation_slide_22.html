@@ -3,34 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 22 — background: watermark</title>
+    <title>Slide 22 — feature: css sprite animation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="../source_files/themes/steady.css">
 </head>
 <body>
-    <div class="label-overlay" style="color: rgba(255,255,255,0.5);">Template: <strong style="color: rgba(255,255,255,0.8);">background: watermark</strong></div>
+    <div class="label-overlay" style="color: rgba(0,0,0,0.35);">Feature: <strong style="color: rgba(0,0,0,0.55);">css sprite animation</strong></div>
 
     <!-- Watermark -->
-    <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.35;">
-        <i class="ph ph-presentation" style="font-size: 20px; color: var(--color-divider);"></i>
-        <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 900; letter-spacing: 0.12em; color: var(--color-divider); line-height: 1;">SLYDZ</span>
+    <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.25;">
+        <i class="ph ph-presentation" style="font-size: 20px; color: #2a5a6a;"></i>
+        <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 900; letter-spacing: 0.12em; color: #2a5a6a; line-height: 1;">SLYDZ</span>
     </div>
 
-    <div class="slide active" style="background-color: var(--color-text-primary); position: relative; z-index: 1; justify-content: center; align-items: center; text-align: center;">
-        <div class="editorial-grid" style="width: 100%;">
+    <div class="slide active" style="
+        background: linear-gradient(180deg, #e8e4c8 0%, #b8cec8 45%, #5a8a92 100%);
+        position: relative;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    ">
+        <!-- Bird animation layer -->
+        <div style="position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden;">
+            <div class="bird-wrapper bird-1" style="top: 18%;">
+                <div class="bird-sprite"></div>
+            </div>
+            <div class="bird-wrapper bird-2" style="top: 42%;">
+                <div class="bird-sprite"></div>
+            </div>
+            <div class="bird-wrapper bird-3" style="top: 28%;">
+                <div class="bird-sprite"></div>
+            </div>
+        </div>
+
+        <!-- Drifting solo clouds -->
+        <div style="position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden;">
+            <div class="cloud-a" style="position: absolute; top: 8%;">
+                <div class="cloud-drift cloud-normal"></div>
+            </div>
+            <div class="cloud-b" style="position: absolute; top: 30%;">
+                <div class="cloud-drift cloud-reverse" style="transform: scale(0.7); transform-origin: left center;"></div>
+            </div>
+            <div class="cloud-c" style="position: absolute; top: 48%;">
+                <div class="cloud-drift cloud-normal" style="transform: scale(1.2); transform-origin: left center;"></div>
+            </div>
+        </div>
+
+        <!-- Cloud strip — tiling row at bottom -->
+        <div style="
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            background-image: url('../images/alternate_cloud_background.png');
+            background-repeat: repeat-x;
+            background-position: bottom left;
+            background-size: auto 180px;
+            z-index: 3;
+            pointer-events: none;
+        "></div>
+
+        <!-- Slide content -->
+        <div class="editorial-grid" style="width: 100%; position: relative; z-index: 4;">
             <div class="content-standard" style="text-align: center;">
-                <h2 class="header-font text-6xl font-black" style="color: var(--color-bg-primary); line-height: 1.1; margin-bottom: 1.5rem;">
-                    Watermark Background
+                <h2 class="header-font text-6xl font-black" style="color: #1a4a5a; line-height: 1.1; margin-bottom: 1.5rem;">
+                    Sprite Animation
                 </h2>
-                <p style="color: rgba(255,255,255,0.6); font-size: 1rem; font-style: italic;">
-                    A fixed, low-opacity element behind the slide content.<br>
-                    Swap the icon and text for your own brand mark.
+                <p style="color: rgba(30,70,80,0.7); font-size: 1rem; font-style: italic;">
+                    CSS background-position stepping through a sprite strip.<br>
+                    No JavaScript. No canvas.
                 </p>
             </div>
         </div>
-        <aside class="notes">Watermark: fixed div, z-index 0, opacity 0.08. Slide content sits at z-index 1. Replace ph-presentation and SLYDZ with any icon and brand name. Works on any background colour.</aside>
+
+        <aside class="notes">Bird sprite: 400×98px, 4 frames at 100px each. Two animations run in parallel — flap steps through sprite frames via background-position, fly translates across the screen. Birds flipped with scaleX(-1). Cloud strip tiles repeat-x at bottom.</aside>
     </div>
 
     <div class="slide-nav" style="position: fixed; z-index: 10;">
@@ -43,6 +93,58 @@
     <style>
         .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; font-family: 'Inter', sans-serif; }
         aside.notes { display: none; }
+
+        /* Outer wrapper handles horizontal travel */
+        .bird-wrapper {
+            position: absolute;
+        }
+
+        .bird-1 { animation: fly 8s linear infinite; }
+        .bird-2 { animation: fly 12s linear -4s infinite; }
+        .bird-3 { animation: fly 7s linear -2s infinite; }
+
+        /* Inner sprite handles frame stepping */
+        .bird-sprite {
+            width: 100px;
+            height: 98px;
+            background-image: url('../images/bird_frame_resized.png');
+            background-size: 400px 98px;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            transform: scaleX(-1);
+            animation: flap 0.5s steps(4) infinite;
+        }
+
+        @keyframes flap {
+            from { background-position: 0 0; }
+            to   { background-position: -400px 0; }
+        }
+
+        @keyframes fly {
+            from { transform: translateX(-150px); }
+            to   { transform: translateX(110vw); }
+        }
+
+        /* Drifting solo clouds */
+        .cloud-drift {
+            position: absolute;
+            width: 311px;
+            height: 120px;
+            background-size: 311px 120px;
+            background-repeat: no-repeat;
+        }
+
+        .cloud-normal  { background-image: url('../images/cloud.png'); }
+        .cloud-reverse { background-image: url('../images/cloud_reverse.png'); }
+
+        .cloud-a { animation: cloud-fly 22s linear infinite; }
+        .cloud-b { animation: cloud-fly 30s linear -8s infinite; }
+        .cloud-c { animation: cloud-fly 18s linear -14s infinite; }
+
+        @keyframes cloud-fly {
+            from { transform: translateX(-350px); }
+            to   { transform: translateX(110vw); }
+        }
     </style>
 </body>
 </html>
