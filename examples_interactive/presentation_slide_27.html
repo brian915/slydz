@@ -3,37 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 22 — background: watermark</title>
+    <title>Slide 27 — background: tiled (three-colour)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="../source_files/themes/steady.css">
 </head>
 <body>
-    <div class="label-overlay" style="color: rgba(255,255,255,0.5);">Template: <strong style="color: rgba(255,255,255,0.8);">background: watermark</strong></div>
-
+    <div class="label-overlay" style="color: rgba(255,255,255,0.5);">Template: <strong style="color: rgba(255,255,255,0.8);">background: tiled (three-colour)</strong></div>
     <!-- Watermark -->
     <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.35;">
         <i class="ph ph-presentation" style="font-size: 20px; color: var(--color-divider);"></i>
         <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 900; letter-spacing: 0.12em; color: var(--color-divider); line-height: 1;">SLYDZ</span>
     </div>
 
-    <div class="slide active" style="background-color: var(--color-text-primary); position: relative; z-index: 1; justify-content: center; align-items: center; text-align: center;">
+    <div class="slide active" style="
+        background-color: var(--color-text-primary);
+        background-image:
+            radial-gradient(circle, rgba(75,64,249,0.7) 1.5px, transparent 1.5px),
+            radial-gradient(circle, rgba(0,139,139,0.7) 1.5px, transparent 1.5px),
+            radial-gradient(circle, rgba(78,0,142,0.7) 1.5px, transparent 1.5px);
+        background-size: 28px 42px;
+        background-position: 0 0, 14px 14px, 0 28px;
+        justify-content: center; align-items: center; text-align: center;">
         <div class="editorial-grid" style="width: 100%;">
             <div class="content-standard" style="text-align: center;">
                 <h2 class="header-font text-6xl font-black" style="color: var(--color-bg-primary); line-height: 1.1; margin-bottom: 1.5rem;">
-                    Watermark Background
+                    Tiled Background
                 </h2>
                 <p style="color: rgba(255,255,255,0.6); font-size: 1rem; font-style: italic;">
-                    A fixed, low-opacity element behind the slide content.<br>
-                    Swap the icon and text for your own brand mark.
+                    Three-colour dot grid — ultramarine, aqua, deep purple — triangular offset.<br>
+                    Pure CSS, no images.
                 </p>
             </div>
         </div>
-        <aside class="notes">Watermark: fixed div, z-index 0, opacity 0.08. Slide content sits at z-index 1. Replace ph-presentation and SLYDZ with any icon and brand name. Works on any background colour.</aside>
+        <aside class="notes">Three radial gradients in a triangular arrangement: 28px × 42px tile, dots at 0 0 / 14px 14px / 0 28px. Three colours reduce the visual tension of a two-colour alternating grid.</aside>
     </div>
 
-    <div class="slide-nav" style="position: fixed; z-index: 10;">
+    <div class="slide-nav">
         <button id="prevBtn" class="btn btn-outline-light"><i class="ph ph-caret-left"></i> Previous</button>
         <button id="nextBtn" class="btn btn-primary">Next <i class="ph ph-caret-right"></i></button>
     </div>

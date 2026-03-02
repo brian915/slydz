@@ -1,1 +1,1 @@
-const DECK_TOTAL_SLIDES = 25;
+const DECK_TOTAL_SLIDES = 27;

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 25 — layout: iframe half-page</title>
+    <title>Slide 26 — layout: video half-page</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="../source_files/themes/steady.css">
 </head>
 <body class="bg-primary">
-    <div class="label-overlay">Template: <strong>layout: iframe half-page</strong></div>
+    <div class="label-overlay">Template: <strong>layout: video half-page</strong></div>
     <!-- Watermark -->
     <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.35;">
         <i class="ph ph-presentation" style="font-size: 20px; color: var(--color-divider);"></i>
@@ -21,23 +21,39 @@
         <div class="editorial-grid" style="align-items: stretch; height: calc(100vh - 4rem);">
             <div style="grid-column: 1 / span 5; display: flex; flex-direction: column; justify-content: center;">
                 <span class="label-text">Live Content</span>
-                <h2 class="header-font text-4xl font-black text-primary mb-6">Embed Any Live Page</h2>
+                <h2 class="header-font text-4xl font-black text-primary mb-6">Video on the Right</h2>
                 <p style="color: var(--color-text-primary); line-height: 1.8; font-size: 1rem;">
-                    An iframe on half the slide keeps your narrative on the left while a live web property loads on the right — useful for product demos, dashboards, or profiles.
+                    Narrative or context on the left, a video embedded on the right — useful for product walkthroughs, recorded demos, or looping brand footage.
                 </p>
                 <p style="color: var(--color-divider); font-size: 0.8rem; margin-top: 1.5rem; font-style: italic;">
-                    Note: some sitesblock iframe embedding via X-Frame-Options.
+                    In production: replace the placeholder with a <code>&lt;video&gt;</code> element pointing to your file or stream.
                 </p>
             </div>
             <div style="grid-column: 6 / span 7; position: relative; overflow: hidden; border-radius: 8px; border: 1px solid var(--color-divider);">
-                <iframe
-                  src="https://www.brianrunk.net/posting_freqs/posting_freqs.html"
-                    style="width: 100%; height: 100%; border: none;"
-                    title="Live web content">
-                </iframe>
+                <!-- Video placeholder: swap src for a real video file or stream in production -->
+                <!-- <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                    <source src="your-video.mp4" type="video/mp4">
+                </video> -->
+
+                <!-- CSS animation standing in for a video -->
+                <div style="
+                    width: 100%; height: 100%;
+                    background: linear-gradient(135deg,
+                        var(--color-text-primary) 0%,
+                        #1a0033 25%,
+                        var(--color-accent-main) 50%,
+                        #1a0033 75%,
+                        var(--color-text-primary) 100%);
+                    background-size: 400% 400%;
+                    animation: gradient-shift 8s ease infinite;
+                    display: flex; align-items: center; justify-content: center;">
+                    <span style="color: rgba(255,255,255,0.4); font-size: 0.85rem; font-style: italic; text-align: center; padding: 1rem;">
+                        Video placeholder<br>replace with &lt;video&gt; element
+                    </span>
+                </div>
             </div>
         </div>
-        <aside class="notes">Half-page iframe: text narrative left, live embed right. Works best with sites that allow embedding. If blocked, the iframe will show an error or blank — swap for an embeddable URL in production.</aside>
+        <aside class="notes">Half-page video: text narrative left, video right. Use autoplay loop muted playsinline for ambient video. For a recorded demo, omit autoplay and add controls.</aside>
     </div>
 
     <div class="slide-nav">
@@ -50,6 +66,11 @@
     <style>
         .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-divider); font-family: 'Inter', sans-serif; }
         aside.notes { display: none; }
+        @keyframes gradient-shift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
     </style>
 </body>
 </html>
