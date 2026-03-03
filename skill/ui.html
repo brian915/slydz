@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slydz — Slide Generation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:        #0f1117;
+            --surface:   #1a1d27;
+            --border:    #2a2d3a;
+            --accent:    #5b6aff;
+            --text:      #e8eaf0;
+            --muted:     #6b7080;
+            --radius:    8px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .shell {
+            width: 100%;
+            max-width: 560px;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 2.5rem;
+        }
+
+        .wordmark {
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .screen-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text);
+            line-height: 1.2;
+        }
+
+        .screen-sub {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 0.3rem;
+        }
+
+        /* Progress */
+        .progress {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 2rem;
+        }
+
+        .pip {
+            height: 3px;
+            flex: 1;
+            border-radius: 2px;
+            background: var(--border);
+            transition: background 0.3s;
+        }
+
+        .pip.active { background: var(--accent); }
+
+        /* Screen visibility */
+        .screen { display: none; }
+        .screen.visible { display: block; }
+
+        /* Field */
+        .field {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="email"],
+        input[type="url"] {
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 0.65rem 0.85rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus {
+            border-color: var(--accent);
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(0.6);
+            cursor: pointer;
+        }
+
+        /* Radio group */
+        .radio-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+        }
+
+        .radio-option {
+            position: relative;
+        }
+
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.65rem 0.85rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--muted);
+            transition: border-color 0.2s, color 0.2s;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        .radio-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            flex-shrink: 0;
+            transition: border-color 0.2s, background 0.2s;
+            position: relative;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label .radio-dot {
+            border-color: var(--accent);
+            background: var(--accent);
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label .radio-dot::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        /* Field hint */
+        .hint {
+            font-size: 0.76rem;
+            color: var(--muted);
+            margin-top: 0.4rem;
+        }
+
+        /* Section divider */
+        .section-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Nav */
+        .nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        button {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 0.65rem 1.4rem;
+            border-radius: var(--radius);
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button:hover { opacity: 0.85; }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid var(--border);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="shell">
+
+    <div class="header">
+        <div class="wordmark">Slydz</div>
+        <div class="screen-title" id="screenTitle">New Presentation</div>
+        <div class="screen-sub" id="screenSub">Configure your deck</div>
+    </div>
+
+    <div class="progress">
+        <div class="pip active" id="pip1"></div>
+        <div class="pip" id="pip2"></div>
+    </div>
+
+    <!-- Screen 1 -->
+    <div class="screen visible" id="screen1">
+
+        <div class="field">
+            <label for="outputDir">Output directory</label>
+            <input type="text" id="outputDir" placeholder="~/Downloads">
+        </div>
+
+        <div class="field">
+            <label for="filename">Filename</label>
+            <input type="text" id="filename" placeholder="my_presentation">
+            <div class="hint">Used as the folder name for generated slides.</div>
+        </div>
+
+        <div class="field">
+            <label>Theme</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" name="theme" id="theme1" value="theme-1">
+                    <label for="theme1" class="radio-label"><span class="radio-dot"></span>Theme One</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="theme" id="theme2" value="theme-2">
+                    <label for="theme2" class="radio-label"><span class="radio-dot"></span>Theme Two</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="theme" id="theme3" value="theme-3">
+                    <label for="theme3" class="radio-label"><span class="radio-dot"></span>Theme Three</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="theme" id="theme4" value="theme-4">
+                    <label for="theme4" class="radio-label"><span class="radio-dot"></span>Theme Four</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="deckDate">Date</label>
+            <input type="date" id="deckDate">
+        </div>
+
+        <div class="nav">
+            <button class="btn-primary" onclick="goTo(2)">Next →</button>
+        </div>
+    </div>
+
+    <!-- Screen 2 -->
+    <div class="screen" id="screen2">
+
+        <div class="section-label">Presenter</div>
+
+        <div class="field">
+            <label for="presenterName">Name</label>
+            <input type="text" id="presenterName" placeholder="Jane Smith">
+        </div>
+
+        <div class="field">
+            <label for="presenterTitle">Title</label>
+            <input type="text" id="presenterTitle" placeholder="Head of Product">
+        </div>
+
+        <div class="field">
+            <label for="presenterCompany">Company</label>
+            <input type="text" id="presenterCompany" placeholder="Acme Co.">
+        </div>
+
+        <div class="section-label">Contact</div>
+
+        <div class="field">
+            <label for="contactEmail">Email</label>
+            <input type="email" id="contactEmail" placeholder="jane@example.com">
+        </div>
+
+        <div class="field">
+            <label for="contactWebsite">Website</label>
+            <input type="url" id="contactWebsite" placeholder="https://example.com">
+        </div>
+
+        <div class="field">
+            <label for="contactSocial">Social</label>
+            <input type="text" id="contactSocial" placeholder="@handle">
+        </div>
+
+        <div class="section-label">Options</div>
+
+        <div class="field">
+            <label for="watermark">Watermark text</label>
+            <input type="text" id="watermark" placeholder="CONFIDENTIAL">
+            <div class="hint">Optional. Appears as a fixed low-opacity overlay on every slide.</div>
+        </div>
+
+        <div class="nav">
+            <button class="btn-ghost" onclick="goTo(1)">← Back</button>
+            <button class="btn-primary" onclick="saveJSON()">Save session</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Default date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('deckDate').value = today;
+
+    function goTo(n) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('visible'));
+        document.getElementById('screen' + n).classList.add('visible');
+        document.querySelectorAll('.pip').forEach((p, i) => {
+            p.classList.toggle('active', i < n);
+        });
+        document.getElementById('screenTitle').textContent = n === 1 ? 'New Presentation' : 'Presenter Details';
+        document.getElementById('screenSub').textContent  = n === 1 ? 'Configure your deck' : 'All fields optional';
+    }
+
+    async function saveJSON() {
+        const selectedTheme = document.querySelector('input[name="theme"]:checked');
+
+        const data = {
+            output_directory: document.getElementById('outputDir').value || '~/Downloads',
+            filename:         document.getElementById('filename').value  || 'my_presentation',
+            theme:            selectedTheme ? selectedTheme.value : null,
+            date:             document.getElementById('deckDate').value,
+            presenter: {
+                name:    document.getElementById('presenterName').value,
+                title:   document.getElementById('presenterTitle').value,
+                company: document.getElementById('presenterCompany').value
+            },
+            contact: {
+                email:   document.getElementById('contactEmail').value,
+                website: document.getElementById('contactWebsite').value,
+                social:  document.getElementById('contactSocial').value
+            },
+            watermark: document.getElementById('watermark').value
+        };
+
+        const json     = JSON.stringify(data, null, 2);
+        const filename = (data.filename || 'slydz_session') + '.json';
+
+        try {
+            const handle = await window.showSaveFilePicker({
+                suggestedName: filename,
+                types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }]
+            });
+            const writable = await handle.createWritable();
+            await writable.write(json);
+            await writable.close();
+        } catch (e) {
+            // Fallback: browser download
+            if (e.name !== 'AbortError') {
+                const blob = new Blob([json], { type: 'application/json' });
+                const url  = URL.createObjectURL(blob);
+                const a    = document.createElement('a');
+                a.href     = url;
+                a.download = filename;
+                a.click();
+                URL.revokeObjectURL(url);
+            }
+        }
+    }
+</script>
+</body>
+</html>

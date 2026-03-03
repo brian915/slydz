@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="../source_files/themes/steady.css">
 </head>
 <body>
     <div class="label-overlay" style="color: rgba(0,0,0,0.35);">Feature: <strong style="color: rgba(0,0,0,0.55);">css sprite animation</strong></div>
@@ -45,7 +44,7 @@
                 <div class="cloud-drift cloud-normal"></div>
             </div>
             <div class="cloud-b" style="position: absolute; top: 30%;">
-                <div class="cloud-drift cloud-reverse" style="transform: scale(0.7); transform-origin: left center;"></div>
+                <div class="cloud-drift cloud-reverse" style="transform: scale(0.7) scaleX(-1); transform-origin: left center;"></div>
             </div>
             <div class="cloud-c" style="position: absolute; top: 48%;">
                 <div class="cloud-drift cloud-normal" style="transform: scale(1.2); transform-origin: left center;"></div>
@@ -59,7 +58,7 @@
             left: 0;
             width: 100%;
             height: 180px;
-            background-image: url('../images/alternate_cloud_background.png');
+            background-image: url('../images/tiling_cloud_background.png');
             background-repeat: repeat-x;
             background-position: bottom left;
             background-size: auto 180px;
@@ -111,7 +110,7 @@
             background-size: 400px 98px;
             background-repeat: no-repeat;
             background-position: 0 0;
-            transform: scaleX(-1);
+
             animation: flap 0.5s steps(4) infinite;
         }
 
@@ -128,14 +127,14 @@
         /* Drifting solo clouds */
         .cloud-drift {
             position: absolute;
-            width: 311px;
-            height: 120px;
-            background-size: 311px 120px;
+            width: 180px;
+            height: 70px;
+            background-size: 180px 70px;
             background-repeat: no-repeat;
         }
 
-        .cloud-normal  { background-image: url('../images/cloud.png'); }
-        .cloud-reverse { background-image: url('../images/cloud_reverse.png'); }
+        .cloud-normal  { background-image: url('../images/cloud_model.svg'); }
+        .cloud-reverse { background-image: url('../images/cloud_model.svg'); }
 
         .cloud-a { animation: cloud-fly 22s linear infinite; }
         .cloud-b { animation: cloud-fly 30s linear -8s infinite; }

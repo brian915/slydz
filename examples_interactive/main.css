@@ -2,16 +2,15 @@
 /*             DEFINITIVE COLOR ROLES                   */
 /* ---------------------------------------------------- */
 :root {
-    /* Hex values from color_role_table.html */
-    --color-text-primary: #1F2A44; /* Primary Text & Containers (Deep Navy) */
-    --color-accent-main: #4E008E;  /* Main Accent (Vivid) (Medium Purple) */
-    --color-utility-alert: #A6192E; /* Secondary Accent / Alert Utility ("Crimson") */
-    --color-utility-confirmation: #006F62; /* Secondary Accent / Confirmation Utility ("Forest Green") */
-    --color-divider: #B0B7BE; /* Divider & Secondary Text (Pearl Blue) */
-    --color-base-subtle-1: #DDE5ED; /* Subtle Base 1 ("Periwinkle") */
-    --color-base-subtle-2: #E0DDEC; /* Subtle Base 2 ("Lilac") */
-    --color-accent-light: #B9D9EB;  /* Light Accent ("Robin's Egg") */
-    --color-bg-primary: #F7F6F2;   /* Primary Background (Stalactite) */
+    --color-text-primary:         #1a4a5a; /* Dark teal — primary text */
+    --color-accent-main:          #5a8a92; /* Medium teal — buttons, highlights, progress bar */
+    --color-utility-alert:        #e8e4c8; /* Warm cream — warnings, negative states */
+    --color-utility-confirmation: #5a8a92; /* Medium teal — positive states */
+    --color-divider:              #2a5a6a; /* Deep teal — secondary text, borders, dividers */
+    --color-base-subtle-1:        #c9ddd4; /* Pale mint — subtle fills */
+    --color-base-subtle-2:        #b8cec8; /* Pale sage — alternate subtle fills */
+    --color-accent-light:         #e8e4c8; /* Warm cream — light accent */
+    --color-bg-primary:           #ffffff; /* White — slide background */
 }
 
 /* ---------------------------------------------------- */
