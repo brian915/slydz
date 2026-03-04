@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 19 — auto-fit text</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="bg-primary">
+    <div class="label-overlay">Template: <strong>auto-fit text</strong></div>
+    <!-- Watermark -->
+    <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.35;">
+        <i class="ph ph-presentation" style="font-size: 20px; color: var(--color-divider);"></i>
+        <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 900; letter-spacing: 0.12em; color: var(--color-divider); line-height: 1;">SLYDZ</span>
+    </div>
+
+    <div class="slide active" style="justify-content: center; align-items: center; padding: 2rem 4rem;">
+        <div style="width: 100%; overflow: hidden;">
+            <p class="autofit-text header-font font-black text-primary" style="white-space: nowrap; display: block; line-height: 1;"><span style="position: relative; display: inline-block;"><span class="swap-out" style="transition: opacity 0.3s ease;">LOREM</span><span class="reveal swap-in" style="position: absolute; left: 0; top: 0; color: var(--color-accent-main); white-space: nowrap;">IPSUM</span></span></p>
+        </div>
+        <p style="color: var(--color-divider); font-size: 0.85rem; margin-top: 2rem; text-align: center; text-transform: uppercase; letter-spacing: 0.1em;">
+            JS scales this text to fill the full slide width
+        </p>
+        <aside class="notes">The autofit_text() function in slide_engine.js measures the container and adjusts font-size until the text perfectly fills the available width.</aside>
+    </div>
+
+    <div class="slide-nav">
+        <button id="prevBtn" class="btn btn-outline"><i class="ph ph-caret-left"></i> Previous</button>
+        <button id="nextBtn" class="btn btn-primary">Next <i class="ph ph-caret-right"></i></button>
+    </div>
+
+    <script src="presentation_slide_config.js"></script>
+    <script src="slide_engine.js"></script>
+    <style>
+        .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-divider); font-family: 'Inter', sans-serif; }
+        aside.notes { display: none; }
+        .swap-out { opacity: 1; }
+        span:has(.swap-in.visible) > .swap-out { opacity: 0; transition: opacity 0.3s ease; }
+    </style>
+</body>
+</html>

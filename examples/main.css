@@ -2,16 +2,15 @@
 /*             DEFINITIVE COLOR ROLES                   */
 /* ---------------------------------------------------- */
 :root {
-    /* Hex values from color_role_table.html */
-    --color-text-primary: #1F2A44; /* Primary Text & Containers (Deep Navy) */
-    --color-accent-main: #4E008E;  /* Main Accent (Vivid) (Medium Purple) */
-    --color-utility-alert: #A6192E; /* Secondary Accent / Alert Utility ("Crimson") */
-    --color-utility-confirmation: #006F62; /* Secondary Accent / Confirmation Utility ("Forest Green") */
-    --color-divider: #B0B7BE; /* Divider & Secondary Text (Pearl Blue) */
-    --color-base-subtle-1: #DDE5ED; /* Subtle Base 1 ("Periwinkle") */
-    --color-base-subtle-2: #E0DDEC; /* Subtle Base 2 ("Lilac") */
-    --color-accent-light: #B9D9EB;  /* Light Accent ("Robin's Egg") */
-    --color-bg-primary: #F7F6F2;   /* Primary Background (Stalactite) */
+    --color-text-primary:         #1B4E59; /* Deep dark teal — primary text */
+    --color-accent-main:          #8AA6A3; /* Muted sage — buttons, highlights, progress bar */
+    --color-utility-alert:        #F2EDD5; /* Warm cream — warnings, negative states */
+    --color-utility-confirmation: #6FBF9A; /* Medium mint-green — positive states */
+    --color-divider:              #8AA6A3; /* Muted sage — secondary text, borders, dividers */
+    --color-base-subtle-1:        #C1D9CE; /* Light mint — subtle fills */
+    --color-base-subtle-2:        #8AA6A3; /* Muted sage — alternate subtle fills */
+    --color-accent-light:         #F2EDD5; /* Warm cream — light accent */
+    --color-bg-primary:           #ffffff; /* White — slide background */
 }
 
 /* ---------------------------------------------------- */

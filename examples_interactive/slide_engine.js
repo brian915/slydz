@@ -14,49 +14,49 @@ const next_slide_number     = current_slide_number + 1;
 const previous_slide_filename = "presentation_slide_" + previous_slide_number + ".html";
 const next_slide_filename     = "presentation_slide_" + next_slide_number + ".html";
 
-// ── Fragment state ───────────────────────────────────────────
-let fragments       = [];
-let fragment_index  = -1;   // -1 = none revealed yet
+// ── Progressive reveal state ──────────────────────────────────
+let steps       = [];
+let step_index  = -1;   // -1 = none revealed yet
 
-function collect_fragments() {
-    fragments = Array.from(document.querySelectorAll('.fragment'));
-    fragment_index = -1;
+function collect_reveal_steps() {
+    steps = Array.from(document.querySelectorAll('.reveal'));
+    step_index = -1;
 }
 
-function advance_fragment() {
-    // Returns true if a fragment was advanced, false if all done
-    if (fragment_index >= fragments.length - 1) return false;
-    // Dismiss current fragment if fade-in-then-out
-    if (fragment_index >= 0) {
-        const current = fragments[fragment_index];
+function advance_step() {
+    // Returns true if a step was advanced, false if all done
+    if (step_index >= steps.length - 1) return false;
+    // Dismiss current step if fade-in-then-out
+    if (step_index >= 0) {
+        const current = steps[step_index];
         if (current.classList.contains('fade-in-then-out')) {
             current.classList.remove('visible');
             current.classList.add('gone');
         }
     }
-    fragment_index++;
-    fragments[fragment_index].classList.add('visible');
+    step_index++;
+    steps[step_index].classList.add('visible');
     return true;
 }
 
-function retreat_fragment() {
-    if (fragment_index < 0) return false;
-    const f = fragments[fragment_index];
+function retreat_step() {
+    if (step_index < 0) return false;
+    const f = steps[step_index];
     f.classList.remove('visible', 'gone');
-    fragment_index--;
+    step_index--;
     return true;
 }
 
 // ── Navigation ───────────────────────────────────────────────
 function go_prev() {
-    if (retreat_fragment()) return;
+    if (retreat_step()) return;
     if (current_slide_number > 1) {
         window.location.href = previous_slide_filename;
     }
 }
 
 function go_next() {
-    if (advance_fragment()) return;
+    if (advance_step()) return;
     if (current_slide_number < DECK_TOTAL_SLIDES) {
         window.location.href = next_slide_filename;
     }
@@ -272,7 +272,7 @@ function autofit_text() {
 }
 
 // Run immediately — script is at bottom of body so DOM is ready
-collect_fragments();
+collect_reveal_steps();
 // Defer autofit: window.onload guarantees fonts + layout; double rAF ensures
 // the browser has committed the post-load reflow before we measure.
 window.addEventListener('load', function() {

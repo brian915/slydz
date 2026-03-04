@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div class="label-overlay" style="color: rgba(255,255,255,0.5);">Template: <strong style="color: rgba(255,255,255,0.8);">background: tiled (three-colour)</strong></div>
+    <div class="label-overlay" style="color: var(--color-divider);">Template: <strong style="color: var(--color-text-primary);">background: tiled (three-colour)</strong></div>
     <!-- Watermark -->
     <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.35;">
         <i class="ph ph-presentation" style="font-size: 20px; color: var(--color-divider);"></i>
@@ -17,21 +17,21 @@
     </div>
 
     <div class="slide active" style="
-        background-color: var(--color-text-primary);
+        background-color: var(--color-utility-alert);
         background-image:
-            radial-gradient(circle, rgba(201,221,212,0.7) 1.5px, transparent 1.5px),
-            radial-gradient(circle, rgba(184,206,200,0.7) 1.5px, transparent 1.5px),
-            radial-gradient(circle, rgba(232,228,200,0.7) 1.5px, transparent 1.5px);
+            radial-gradient(circle, rgba(27,78,89,0.7) 1.5px, transparent 1.5px),
+            radial-gradient(circle, rgba(111,191,154,0.7) 1.5px, transparent 1.5px),
+            radial-gradient(circle, rgba(138,166,163,0.7) 1.5px, transparent 1.5px);
         background-size: 28px 42px;
         background-position: 0 0, 14px 14px, 0 28px;
         justify-content: center; align-items: center; text-align: center;">
         <div class="editorial-grid" style="width: 100%;">
             <div class="content-standard" style="text-align: center;">
-                <h2 class="header-font text-6xl font-black" style="color: var(--color-bg-primary); line-height: 1.1; margin-bottom: 1.5rem;">
+                <h2 class="header-font text-6xl font-black" style="color: var(--color-text-primary); line-height: 1.1; margin-bottom: 1.5rem;">
                     Tiled Background
                 </h2>
-                <p style="color: rgba(255,255,255,0.6); font-size: 1rem; font-style: italic;">
-                    Three-colour dot grid — pale mint, pale sage, warm cream — triangular offset.<br>
+                <p style="color: var(--color-text-primary); opacity: 0.6; font-size: 1rem; font-style: italic;">
+                    Three-colour dot grid — dark teal, mint, sage — triangular offset.<br>
                     Pure CSS, no images.
                 </p>
             </div>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="slide-nav">
-        <button id="prevBtn" class="btn btn-outline-light"><i class="ph ph-caret-left"></i> Previous</button>
+        <button id="prevBtn" class="btn btn-outline"><i class="ph ph-caret-left"></i> Previous</button>
         <button id="nextBtn" class="btn btn-primary">Next <i class="ph ph-caret-right"></i></button>
     </div>
 

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 16 — fragments: highlight</title>
+    <title>Slide 16 — progressive reveal: highlight</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link rel="stylesheet" href="main.css">
 </head>
 <body class="bg-primary">
-    <div class="label-overlay">Template: <strong>fragments: highlight</strong> &nbsp;·&nbsp; press <kbd>→</kbd> to highlight</div>
+    <div class="label-overlay">Template: <strong>progressive reveal: highlight</strong> &nbsp;·&nbsp; press <kbd>→</kbd> to highlight</div>
     <!-- Watermark -->
     <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.35;">
         <i class="ph ph-presentation" style="font-size: 20px; color: var(--color-divider);"></i>
@@ -23,11 +23,11 @@
                 <h2 class="header-font text-5xl font-black text-primary mb-8">Draw Attention to Key Words</h2>
                 <p style="font-size: 1.4rem; line-height: 2; color: var(--color-text-primary);">
                     Lorem ipsum dolor sit amet,
-                    <span class="fragment highlight" style="font-weight: 800; transition: color 0.3s;">consectetur</span>
+                    <span class="reveal highlight" style="transition: color 0.3s;">consectetur</span>
                     adipiscing elit. Sed do eiusmod tempor
-                    <span class="fragment highlight-alert" style="font-weight: 800; transition: color 0.3s;">incididunt</span>
+                    <span class="reveal highlight-alert underline" style="transition: color 0.3s;">incididunt</span>
                     ut labore et dolore magna
-                    <span class="fragment" style="font-weight: 800; color: var(--color-utility-confirmation); transition: color 0.3s;">aliqua.</span>
+                    <em class="reveal" style="color: var(--color-utility-confirmation); transition: color 0.3s;">aliqua.</em>
                 </p>
             </div>
         </div>
@@ -45,7 +45,7 @@
         .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-divider); font-family: 'Inter', sans-serif; }
         kbd { background: var(--color-base-subtle-1); padding: 1px 5px; border-radius: 3px; font-family: monospace; }
         aside.notes { display: none; }
-        /* fragment styles now in main.css */
+        /* progressive reveal styles in main.css */
     </style>
 </body>
 </html>

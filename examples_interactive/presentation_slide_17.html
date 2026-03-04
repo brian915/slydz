@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 17 — fragments: shrink/grow</title>
+    <title>Slide 17 — progressive reveal: shrink/grow</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link rel="stylesheet" href="main.css">
 </head>
 <body class="bg-primary">
-    <div class="label-overlay">Template: <strong>fragments: shrink / grow</strong> &nbsp;·&nbsp; press <kbd>→</kbd> to animate</div>
+    <div class="label-overlay">Template: <strong>progressive reveal: shrink / grow</strong> &nbsp;·&nbsp; press <kbd>→</kbd> to animate</div>
     <!-- Watermark -->
     <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.35;">
         <i class="ph ph-presentation" style="font-size: 20px; color: var(--color-divider);"></i>
@@ -22,14 +22,14 @@
                 <span class="label-text">Scale Transforms</span>
                 <h2 class="header-font text-4xl font-black text-primary mb-12">Elements That Move</h2>
                 <div style="display: flex; justify-content: center; gap: 4rem; align-items: center;">
-                    <div class="fragment scale-up" style="transition: transform 0.4s ease; transform-origin: center;">
+                    <div class="reveal scale-up" style="transition: transform 0.4s ease; transform-origin: center;">
                         <div style="width: 100px; height: 100px; border-radius: 50%; background: var(--color-accent-main); display: flex; align-items: center; justify-content: center;">
                             <i class="ph ph-arrow-up" style="font-size: 2.5rem; color: white;"></i>
                         </div>
                         <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-divider); text-transform: uppercase; letter-spacing: 0.05em;">Grows</p>
                     </div>
-                    <div class="fragment scale-down" style="transition: transform 0.4s ease; transform-origin: center;">
-                        <div style="width: 100px; height: 100px; border-radius: 50%; background: var(--color-utility-alert); display: flex; align-items: center; justify-content: center;">
+                    <div class="reveal scale-down" style="transition: transform 0.4s ease; transform-origin: center;">
+                        <div style="width: 100px; height: 100px; border-radius: 50%; background: var(--color-text-primary); display: flex; align-items: center; justify-content: center;">
                             <i class="ph ph-arrow-down" style="font-size: 2.5rem; color: white;"></i>
                         </div>
                         <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-divider); text-transform: uppercase; letter-spacing: 0.05em;">Shrinks</p>
@@ -51,7 +51,7 @@
         .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-divider); font-family: 'Inter', sans-serif; }
         kbd { background: var(--color-base-subtle-1); padding: 1px 5px; border-radius: 3px; font-family: monospace; }
         aside.notes { display: none; }
-        /* fragment styles now in main.css */
+        /* progressive reveal styles in main.css */
     </style>
 </body>
 </html>

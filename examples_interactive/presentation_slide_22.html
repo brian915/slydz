@@ -26,7 +26,7 @@
         text-align: center;
     ">
         <!-- Bird animation layer -->
-        <div style="position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden;">
+        <div style="position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden;">
             <div class="bird-wrapper bird-1" style="top: 18%;">
                 <div class="bird-sprite"></div>
             </div>
@@ -39,7 +39,7 @@
         </div>
 
         <!-- Drifting solo clouds -->
-        <div style="position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden;">
+        <div style="position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden;">
             <div class="cloud-a" style="position: absolute; top: 8%;">
                 <div class="cloud-drift cloud-normal"></div>
             </div>
@@ -62,7 +62,7 @@
             background-repeat: repeat-x;
             background-position: bottom left;
             background-size: auto 180px;
-            z-index: 3;
+            z-index: 1;
             pointer-events: none;
         "></div>
 
@@ -98,21 +98,23 @@
             position: absolute;
         }
 
-        .bird-1 { animation: fly 8s linear infinite; }
-        .bird-2 { animation: fly 12s linear -4s infinite; }
-        .bird-3 { animation: fly 7s linear -2s infinite; }
+        .bird-1 { animation: fly 11s linear infinite; }
+        .bird-2 { animation: fly 11s linear -4s infinite; }
+        .bird-3 { animation: fly 11s linear -8s infinite; }
 
         /* Inner sprite handles frame stepping */
         .bird-sprite {
             width: 100px;
             height: 98px;
-            background-image: url('../images/bird_frame_resized.png');
+            background-image: url('../images/origamis.svg');
             background-size: 400px 98px;
             background-repeat: no-repeat;
             background-position: 0 0;
 
             animation: flap 0.5s steps(4) infinite;
         }
+
+        .bird-3 .bird-sprite { background-image: url('../images/origamis_too.svg'); }
 
         @keyframes flap {
             from { background-position: 0 0; }
@@ -136,9 +138,9 @@
         .cloud-normal  { background-image: url('../images/cloud_model.svg'); }
         .cloud-reverse { background-image: url('../images/cloud_model.svg'); }
 
-        .cloud-a { animation: cloud-fly 22s linear infinite; }
-        .cloud-b { animation: cloud-fly 30s linear -8s infinite; }
-        .cloud-c { animation: cloud-fly 18s linear -14s infinite; }
+        .cloud-a { animation: cloud-fly 44s linear infinite; }
+        .cloud-b { animation: cloud-fly 60s linear -8s infinite; }
+        .cloud-c { animation: cloud-fly 36s linear -14s infinite; }
 
         @keyframes cloud-fly {
             from { transform: translateX(-350px); }

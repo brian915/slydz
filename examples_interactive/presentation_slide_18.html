@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 18 — fragments: fade-in-then-out</title>
+    <title>Slide 18 — progressive reveal: fade-in-then-out</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link rel="stylesheet" href="main.css">
 </head>
 <body class="bg-primary">
-    <div class="label-overlay">Template: <strong>fragments: fade-in-then-out</strong> &nbsp;·&nbsp; press <kbd>→</kbd> twice</div>
+    <div class="label-overlay">Template: <strong>progressive reveal: fade-in-then-out</strong> &nbsp;·&nbsp; press <kbd>→</kbd> twice</div>
     <!-- Watermark -->
     <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.35;">
         <i class="ph ph-presentation" style="font-size: 20px; color: var(--color-divider);"></i>
@@ -22,10 +22,10 @@
                 <span class="label-text">Fade In, Then Out</span>
                 <h2 class="header-font text-4xl font-black text-primary mb-10">Replace One Idea With Another</h2>
                 <div style="position: relative; min-height: 80px;">
-                    <p class="fragment fade-in-then-out header-font text-3xl font-bold" style="position: absolute; width: 100%; color: var(--color-utility-alert);">
+                    <p class="reveal fade-in-then-out header-font text-3xl font-bold" style="position: absolute; width: 100%; color: var(--color-text-primary);">
                         ✗ &nbsp; The old way of thinking
                     </p>
-                    <p class="fragment header-font text-3xl font-bold" style="position: absolute; width: 100%; color: var(--color-utility-confirmation);">
+                    <p class="reveal header-font text-3xl font-bold" style="position: absolute; width: 100%; color: var(--color-utility-confirmation);">
                         ✓ &nbsp; The new way of thinking
                     </p>
                 </div>
@@ -45,7 +45,7 @@
         .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-divider); font-family: 'Inter', sans-serif; }
         kbd { background: var(--color-base-subtle-1); padding: 1px 5px; border-radius: 3px; font-family: monospace; }
         aside.notes { display: none; }
-        /* fragment styles now in main.css */
+        /* progressive reveal styles in main.css */
     </style>
 </body>
 </html>

@@ -7,23 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../examples_test_one/main.css">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        :root {
-            --bg:        #0f1117;
-            --surface:   #1a1d27;
-            --border:    #2a2d3a;
-            --accent:    #5b6aff;
-            --text:      #e8eaf0;
-            --muted:     #6b7080;
-            --radius:    8px;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            background: var(--color-bg-primary);
+            color: var(--color-primary);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -46,20 +37,20 @@
             font-weight: 900;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: var(--accent);
+            color: var(--color-accent-main);
             margin-bottom: 0.4rem;
         }
 
         .screen-title {
             font-size: 1.5rem;
             font-weight: 900;
-            color: var(--text);
+            color: var(--color-primary);
             line-height: 1.2;
         }
 
         .screen-sub {
             font-size: 0.85rem;
-            color: var(--muted);
+            color: var(--color-divider);
             margin-top: 0.3rem;
         }
 
@@ -74,11 +65,11 @@
             height: 3px;
             flex: 1;
             border-radius: 2px;
-            background: var(--border);
+            background: var(--color-base-subtle-1);
             transition: background 0.3s;
         }
 
-        .pip.active { background: var(--accent); }
+        .pip.active { background: var(--color-accent-main); }
 
         /* Screen visibility */
         .screen { display: none; }
@@ -95,7 +86,7 @@
             font-weight: 600;
             letter-spacing: 0.06em;
             text-transform: uppercase;
-            color: var(--muted);
+            color: var(--color-divider);
             margin-bottom: 0.5rem;
         }
 
@@ -104,13 +95,13 @@
         input[type="email"],
         input[type="url"] {
             width: 100%;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
+            background: var(--color-base-subtle-1);
+            border: 1px solid var(--color-divider);
+            border-radius: 8px;
             padding: 0.65rem 0.85rem;
             font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
-            color: var(--text);
+            color: var(--color-primary);
             outline: none;
             transition: border-color 0.2s;
         }
@@ -119,7 +110,7 @@
         input[type="date"]:focus,
         input[type="email"]:focus,
         input[type="url"]:focus {
-            border-color: var(--accent);
+            border-color: var(--color-accent-main);
         }
 
         input[type="date"]::-webkit-calendar-picker-indicator {
@@ -150,36 +141,36 @@
             align-items: center;
             gap: 0.6rem;
             padding: 0.65rem 0.85rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
+            background: var(--color-base-subtle-1);
+            border: 1px solid var(--color-divider);
+            border-radius: 8px;
             cursor: pointer;
             font-size: 0.88rem;
             font-weight: 500;
-            color: var(--muted);
+            color: var(--color-divider);
             transition: border-color 0.2s, color 0.2s;
             text-transform: none;
             letter-spacing: 0;
         }
 
         .radio-option input[type="radio"]:checked + .radio-label {
-            border-color: var(--accent);
-            color: var(--text);
+            border-color: var(--color-accent-main);
+            color: var(--color-primary);
         }
 
         .radio-dot {
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            border: 2px solid var(--border);
+            border: 2px solid var(--color-divider);
             flex-shrink: 0;
             transition: border-color 0.2s, background 0.2s;
             position: relative;
         }
 
         .radio-option input[type="radio"]:checked + .radio-label .radio-dot {
-            border-color: var(--accent);
-            background: var(--accent);
+            border-color: var(--color-accent-main);
+            background: var(--color-accent-main);
         }
 
         .radio-option input[type="radio"]:checked + .radio-label .radio-dot::after {
@@ -193,7 +184,7 @@
         /* Field hint */
         .hint {
             font-size: 0.76rem;
-            color: var(--muted);
+            color: var(--color-divider);
             margin-top: 0.4rem;
         }
 
@@ -203,8 +194,8 @@
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--muted);
-            border-bottom: 1px solid var(--border);
+            color: var(--color-divider);
+            border-bottom: 1px solid var(--color-divider);
             padding-bottom: 0.5rem;
             margin-bottom: 1.25rem;
             margin-top: 0.5rem;
@@ -223,7 +214,7 @@
             font-size: 0.88rem;
             font-weight: 600;
             padding: 0.65rem 1.4rem;
-            border-radius: var(--radius);
+            border-radius: 8px;
             border: none;
             cursor: pointer;
             transition: opacity 0.2s;
@@ -233,13 +224,8 @@
 
         .btn-ghost {
             background: transparent;
-            color: var(--muted);
-            border: 1px solid var(--border);
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: #fff;
+            color: var(--color-divider);
+            border: 1px solid var(--color-divider);
         }
     </style>
 </head>
@@ -255,6 +241,7 @@
     <div class="progress">
         <div class="pip active" id="pip1"></div>
         <div class="pip" id="pip2"></div>
+        <div class="pip" id="pip3"></div>
     </div>
 
     <!-- Screen 1 -->
@@ -323,6 +310,15 @@
             <input type="text" id="presenterCompany" placeholder="Acme Co.">
         </div>
 
+        <div class="nav">
+            <button class="btn-ghost" onclick="goTo(1)">← Back</button>
+            <button class="btn-primary" onclick="goTo(3)">Next →</button>
+        </div>
+    </div>
+
+    <!-- Screen 3 -->
+    <div class="screen" id="screen3">
+
         <div class="section-label">Contact</div>
 
         <div class="field">
@@ -340,16 +336,16 @@
             <input type="text" id="contactSocial" placeholder="@handle">
         </div>
 
-        <div class="section-label">Options</div>
+        <div class="section-label">Watermark</div>
 
         <div class="field">
             <label for="watermark">Watermark text</label>
             <input type="text" id="watermark" placeholder="CONFIDENTIAL">
-            <div class="hint">Optional. Appears as a fixed low-opacity overlay on every slide.</div>
+            <div class="hint">Appears as a fixed low-opacity overlay on every slide.</div>
         </div>
 
         <div class="nav">
-            <button class="btn-ghost" onclick="goTo(1)">← Back</button>
+            <button class="btn-ghost" onclick="goTo(2)">← Back</button>
             <button class="btn-primary" onclick="saveJSON()">Save session</button>
         </div>
     </div>
@@ -361,14 +357,17 @@
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('deckDate').value = today;
 
+    const screenTitles = ['New Presentation', 'Presenter Details', 'Contact & Options'];
+    const screenSubs   = ['Configure your deck', 'All fields optional', 'Optional'];
+
     function goTo(n) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('visible'));
         document.getElementById('screen' + n).classList.add('visible');
         document.querySelectorAll('.pip').forEach((p, i) => {
             p.classList.toggle('active', i < n);
         });
-        document.getElementById('screenTitle').textContent = n === 1 ? 'New Presentation' : 'Presenter Details';
-        document.getElementById('screenSub').textContent  = n === 1 ? 'Configure your deck' : 'All fields optional';
+        document.getElementById('screenTitle').textContent = screenTitles[n - 1];
+        document.getElementById('screenSub').textContent  = screenSubs[n - 1];
     }
 
     async function saveJSON() {

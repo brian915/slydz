@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 25 — layout: iframe half-page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="bg-primary">
+    <div class="label-overlay">Template: <strong>layout: iframe half-page</strong></div>
+    <!-- Watermark -->
+    <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.35;">
+        <i class="ph ph-presentation" style="font-size: 20px; color: var(--color-divider);"></i>
+        <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 900; letter-spacing: 0.12em; color: var(--color-divider); line-height: 1;">SLYDZ</span>
+    </div>
+
+    <div class="slide active" style="padding: 2rem 4rem;">
+        <div class="editorial-grid" style="align-items: center; height: calc(100vh - 4rem);">
+            <div style="grid-column: 1 / span 5; display: flex; flex-direction: column; justify-content: center;">
+                <span class="label-text">Live Content</span>
+                <h2 class="header-font text-4xl font-black text-primary mb-6">Embed Any Live Page</h2>
+                <p style="color: var(--color-primary); line-height: 1.8; font-size: 1rem;">
+                    An iframe on half the slide keeps your narrative on the left while a live web property loads on the right — useful for product demos, dashboards, or profiles.
+                </p>
+                <p style="color: var(--color-divider); font-size: 0.8rem; margin-top: 1.5rem; font-style: italic;">
+                    Note: some sites block iframe embedding via X-Frame-Options.
+                </p>
+            </div>
+            <div style="grid-column: 6 / span 7; position: relative; overflow: hidden; border-radius: 8px; border: 1px solid var(--color-divider); align-self: center; height: 80%;">
+                <iframe
+                  src="https://www.brianrunk.net/posting_freqs/posting_freqs.html"
+                    style="width: 100%; height: 100%; border: none;"
+                    title="Live web content">
+                </iframe>
+            </div>
+        </div>
+        <aside class="notes">Half-page iframe: text narrative left, live embed right. Works best with sites that allow embedding. If blocked, the iframe will show an error or blank — swap for an embeddable URL in production.</aside>
+    </div>
+
+    <div class="slide-nav">
+        <button id="prevBtn" class="btn btn-outline"><i class="ph ph-caret-left"></i> Previous</button>
+        <button id="nextBtn" class="btn btn-primary">Next <i class="ph ph-caret-right"></i></button>
+    </div>
+
+    <script src="presentation_slide_config.js"></script>
+    <script src="slide_engine.js"></script>
+    <style>
+        .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-divider); font-family: 'Inter', sans-serif; }
+        aside.notes { display: none; }
+    </style>
+</body>
+</html>

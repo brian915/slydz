@@ -10,12 +10,17 @@
 </head>
 <body class="bg-primary">
     <div class="label-overlay">Template: <strong>centered-statement</strong></div>
+    <!-- Watermark -->
+    <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.35;">
+        <i class="ph ph-presentation" style="font-size: 20px; color: var(--color-divider);"></i>
+        <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 900; letter-spacing: 0.12em; color: var(--color-divider); line-height: 1;">SLYDZ</span>
+    </div>
 
     <div class="slide active" style="justify-content: center; align-items: center; text-align: center;">
         <div class="editorial-grid" style="width: 100%;">
             <div class="content-standard" style="text-align: center;">
                 <p class="header-font text-6xl font-black text-primary" style="line-height: 1.2;">
-                    Everything changes<br />when you change<br /><span style="color: var(--color-accent-main);">the question.</span>
+                    Everything changes<br />when you change<span class="line-three"><br /><span style="position: relative; display: inline-block;"><span class="swap-out" style="transition: opacity 0.3s ease;"><span class="reveal highlight-alert" style="transition: color 0.3s ease;">your socks.</span></span><span class="reveal swap-in fade-in-then-out" style="position: absolute; left: 0; top: 0; color: var(--color-accent-main); white-space: nowrap;">the question.</span></span><span class="reveal collapse-trigger" style="display: none;"></span></span><span class="final-period">.</span>
                 </p>
             </div>
         </div>
@@ -28,10 +33,16 @@
     </div>
 
     <script src="presentation_slide_config.js"></script>
-    <script src="slide_controls.js"></script>
+    <script src="slide_engine.js"></script>
     <style>
         .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-divider); font-family: 'Inter', sans-serif; }
         aside.notes { display: none; }
+        .swap-out { opacity: 1; }
+        .swap-out .reveal.highlight-alert.visible { text-decoration: line-through; }
+        span:has(.swap-in.visible, .swap-in.gone) > .swap-out { opacity: 0; transition: opacity 0.3s ease; }
+        .final-period { display: none; }
+        p:has(.collapse-trigger.visible) .line-three { display: none; }
+        p:has(.collapse-trigger.visible) .final-period { display: inline; }
     </style>
 </body>
 </html>

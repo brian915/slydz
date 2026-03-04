@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 12 — code-block</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="bg-primary">
+    <div class="label-overlay">Template: <strong>code-block</strong></div>
+    <!-- Watermark -->
+    <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.35;">
+        <i class="ph ph-presentation" style="font-size: 20px; color: var(--color-divider);"></i>
+        <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 900; letter-spacing: 0.12em; color: var(--color-divider); line-height: 1;">SLYDZ</span>
+    </div>
+
+    <div class="slide active">
+        <div class="editorial-grid">
+            <div class="content-standard">
+                <span class="label-text">Implementation</span>
+                <h2 class="header-font text-4xl font-black text-primary mb-6">How It Works</h2>
+                <div style="background-color: var(--color-text-primary); border-radius: 8px; padding: 2rem; font-family: 'Courier New', monospace; font-size: 0.95rem; line-height: 1.8; overflow-x: auto;">
+                    <div style="color: var(--color-divider); margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;">example.rb</div>
+                    <span style="color: #B9D9EB;">def</span>
+                    <span style="color: #F7F6F2;"> lorem_ipsum</span>
+                    <span style="color: var(--color-divider);">(</span>
+                    <span style="color: #DDE5ED;">words</span>
+                    <span style="color: var(--color-divider);">)</span><br>
+                    &nbsp;&nbsp;<span style="color: #B9D9EB;">return</span>
+                    <span style="color: #DDE5ED;"> words</span>
+                    <span style="color: var(--color-divider);">.</span>
+                    <span style="color: #B9D9EB;">map</span>
+                    <span style="color: var(--color-divider);"> { |</span>
+                    <span style="color: #DDE5ED;">w</span>
+                    <span style="color: var(--color-divider);">|</span>
+                    <span style="color: #DDE5ED;"> w</span>
+                    <span style="color: var(--color-divider);">.</span>
+                    <span style="color: #B9D9EB;">capitalize</span>
+                    <span style="color: var(--color-divider);"> }</span><br>
+                    <span style="color: #B9D9EB;">end</span><br><br>
+                    <span style="color: var(--color-divider);"># Usage</span><br>
+                    <span style="color: #DDE5ED;">result</span>
+                    <span style="color: var(--color-divider);"> = </span>
+                    <span style="color: #F7F6F2;">lorem_ipsum</span>
+                    <span style="color: var(--color-divider);">([</span>
+                    <span style="color: #B9D9EB;">"lorem"</span>
+                    <span style="color: var(--color-divider);">, </span>
+                    <span style="color: #B9D9EB;">"ipsum"</span>
+                    <span style="color: var(--color-divider);">, </span>
+                    <span style="color: #B9D9EB;">"dolor"</span>
+                    <span style="color: var(--color-divider);">])</span>
+                </div>
+            </div>
+        </div>
+        <aside class="notes">Walk through each line. Don't assume the audience can read code fluently.</aside>
+    </div>
+
+    <div class="slide-nav">
+        <button id="prevBtn" class="btn btn-outline"><i class="ph ph-caret-left"></i> Previous</button>
+        <button id="nextBtn" class="btn btn-primary">Next <i class="ph ph-caret-right"></i></button>
+    </div>
+
+    <script src="presentation_slide_config.js"></script>
+    <script src="slide_engine.js"></script>
+    <style>
+        .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-divider); font-family: 'Inter', sans-serif; }
+        aside.notes { display: none; }
+    </style>
+</body>
+</html>
