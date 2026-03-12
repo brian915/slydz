@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 22 — feature: css sprite animation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="label-overlay" style="color: rgba(0,0,0,0.35);">Feature: <strong style="color: rgba(0,0,0,0.55);">css sprite animation</strong></div>
+
+    <!-- Watermark -->
+    <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.25;">
+        <i class="ph ph-presentation" style="font-size: 20px; color: #2a5a6a;"></i>
+        <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 900; letter-spacing: 0.12em; color: #2a5a6a; line-height: 1;">SLYDZ</span>
+    </div>
+
+    <div class="slide active" style="
+        position: relative;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    ">
+        <!-- Sky gradient background (filtered separately so text stays unaffected) -->
+        <div style="position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, #e8e4c8 0%, #b8cec8 45%, #5a8a92 100%); filter: hue-rotate(var(--scene-hue-shift));"></div>
+        <!-- Bird animation layer -->
+        <div style="position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden;">
+            <div class="bird-wrapper bird-1" style="top: 18%;">
+                <div class="bird-sprite"></div>
+            </div>
+            <div class="bird-wrapper bird-2" style="top: 42%;">
+                <div class="bird-sprite"></div>
+            </div>
+            <div class="bird-wrapper bird-3" style="top: 28%;">
+                <div class="bird-sprite"></div>
+            </div>
+        </div>
+
+        <!-- Drifting solo clouds -->
+        <div style="position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden;">
+            <div class="cloud-a" style="position: absolute; top: 8%;">
+                <div class="cloud-drift cloud-normal"></div>
+            </div>
+            <div class="cloud-b" style="position: absolute; top: 30%;">
+                <div class="cloud-drift cloud-reverse" style="transform: scale(0.7) scaleX(-1); transform-origin: left center;"></div>
+            </div>
+            <div class="cloud-c" style="position: absolute; top: 48%;">
+                <div class="cloud-drift cloud-normal" style="transform: scale(1.2); transform-origin: left center;"></div>
+            </div>
+        </div>
+
+        <!-- Cloud strip — tiling row at bottom -->
+        <div style="
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            background-image: url('../images/tiling_cloud_background.png');
+            background-repeat: repeat-x;
+            background-position: bottom left;
+            background-size: auto 180px;
+            z-index: 1;
+            pointer-events: none;
+            filter: hue-rotate(var(--scene-hue-shift));
+        "></div>
+
+        <!-- Slide content -->
+        <div class="editorial-grid" style="width: 100%; position: relative; z-index: 4;">
+            <div class="content-standard" style="text-align: center;">
+                <h2 class="header-font text-6xl font-black" style="line-height: 1.1; margin-bottom: 1.5rem;">
+                    Sprite Animation
+                </h2>
+                <p style="font-size: 1rem; font-style: italic; opacity: 0.7;">
+                    CSS background-position stepping through a sprite strip.<br>
+                    No JavaScript. No canvas.
+                </p>
+            </div>
+        </div>
+
+        <aside class="notes">Bird sprite: 400×98px, 4 frames at 100px each. Two animations run in parallel — flap steps through sprite frames via background-position, fly translates across the screen. Birds flipped with scaleX(-1). Cloud strip tiles repeat-x at bottom.</aside>
+    </div>
+
+    <div class="slide-nav" style="position: fixed; z-index: 10;">
+        <button id="prevBtn" class="btn btn-outline-light"><i class="ph ph-caret-left"></i> Previous</button>
+        <button id="nextBtn" class="btn btn-primary">Next <i class="ph ph-caret-right"></i></button>
+    </div>
+
+    <script src="presentation_slide_config.js"></script>
+    <script src="slide_engine.js"></script>
+    <style>
+        .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; font-family: 'Inter', sans-serif; }
+        aside.notes { display: none; }
+
+        /* Outer wrapper handles horizontal travel */
+        .bird-wrapper {
+            position: absolute;
+        }
+
+        .bird-1 { animation: fly 11s linear infinite; }
+        .bird-2 { animation: fly 11s linear -4s infinite; }
+        .bird-3 { animation: fly 11s linear -8s infinite; }
+
+        /* Inner sprite handles frame stepping */
+        .bird-sprite {
+            width: 100px;
+            height: 98px;
+            background-image: url('../images/origamis.svg');
+            background-size: 400px 98px;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            filter: hue-rotate(var(--scene-hue-shift));
+
+            animation: flap 0.5s steps(4) infinite;
+        }
+
+        .bird-3 .bird-sprite { background-image: url('../images/origamis_too.svg'); }
+
+        @keyframes flap {
+            from { background-position: 0 0; }
+            to   { background-position: -400px 0; }
+        }
+
+        @keyframes fly {
+            from { transform: translateX(-150px); }
+            to   { transform: translateX(110vw); }
+        }
+
+        /* Drifting solo clouds */
+        .cloud-drift {
+            position: absolute;
+            width: 180px;
+            height: 70px;
+            background-size: 180px 70px;
+            background-repeat: no-repeat;
+            filter: hue-rotate(var(--scene-hue-shift));
+        }
+
+        .cloud-normal  { background-image: url('../images/cloud_model.svg'); }
+        .cloud-reverse { background-image: url('../images/cloud_model.svg'); }
+
+        .cloud-a { animation: cloud-fly 44s linear infinite; }
+        .cloud-b { animation: cloud-fly 60s linear -8s infinite; }
+        .cloud-c { animation: cloud-fly 36s linear -14s infinite; }
+
+        @keyframes cloud-fly {
+            from { transform: translateX(-350px); }
+            to   { transform: translateX(110vw); }
+        }
+    </style>
+</body>
+</html>
