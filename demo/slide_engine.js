@@ -6,13 +6,13 @@
 // ── Slide identity ───────────────────────────────────────────
 const current_page_url      = window.location.pathname;
 const current_filename      = current_page_url.substring(current_page_url.lastIndexOf('/') + 1);
-const slide_number_match    = current_filename.match(/presentation_slide_(\d+)\.html/);
+const slide_number_match    = current_filename.match(/slide_(\d+)\.html/);
 const current_slide_number  = parseInt(slide_number_match[1]);
 const previous_slide_number = current_slide_number - 1;
 const next_slide_number     = current_slide_number + 1;
 
-const previous_slide_filename = "presentation_slide_" + previous_slide_number + ".html";
-const next_slide_filename     = "presentation_slide_" + next_slide_number + ".html";
+const previous_slide_filename = "slide_" + previous_slide_number + ".html";
+const next_slide_filename     = "slide_" + next_slide_number + ".html";
 
 // ── Progressive reveal state ──────────────────────────────────
 let steps       = [];
@@ -198,7 +198,7 @@ overview_grid.style.cssText = `
 // Build slide cards
 for (let i = 1; i <= DECK_TOTAL_SLIDES; i++) {
     const card = document.createElement('a');
-    card.href = 'presentation_slide_' + i + '.html';
+    card.href = 'slide_' + i + '.html';
     card.style.cssText = `
         display: flex; flex-direction: column; align-items: center;
         justify-content: center; padding: 1rem; border-radius: 6px;

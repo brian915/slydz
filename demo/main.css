@@ -1,6 +1,3 @@
-/* ---------------------------------------------------- */
-/*             DEFINITIVE COLOR ROLES                   */
-/* ---------------------------------------------------- */
 :root {
     --color-primary:              #002e4f; /* Deep navy — primary text */
     --color-accent-main:          #3766b9; /* Blue — buttons, highlights, progress bar */
@@ -14,11 +11,6 @@
     --scene-hue-shift:            65deg;   /* Rotate imagery toward theme palette */
 }
 
-/* ---------------------------------------------------- */
-/*             FUNCTIONAL ABSTRACTION CLASSES           */
-/* ---------------------------------------------------- */
-
-/* Backgrounds */
 .bg-primary { background-color: var(--color-bg-primary); }
 .bg-alternate { background-color: var(--color-primary); }
 .bg-accent-main { background-color: var(--color-accent-main); }
@@ -29,7 +21,7 @@
 .bg-accent-light { background-color: var(--color-accent-light); }
 .bg-divider { background-color: var(--color-divider); }
 
-/* Text Colors */
+
 .text-primary { color: var(--color-primary); }
 .text-accent-main { color: var(--color-accent-main); }
 .text-utility-alert { color: var(--color-utility-alert); }
@@ -38,13 +30,8 @@
 .text-on-dark { color: var(--color-bg-primary); } /* For text on #1F2A44 */
 .text-on-light { color: var(--color-primary); } /* For text on light backgrounds */
 
-/* Borders */
 .border-accent-main { border-color: var(--color-accent-main); }
 .border-divider { border-color: var(--color-divider); }
-
-/* ---------------------------------------------------- */
-/*               TYPOGRAPHY DEFINITIONS                 */
-/* ---------------------------------------------------- */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700;900&display=swap');
 @import url("https://use.typekit.net/qtt2mur.css");
@@ -59,7 +46,7 @@ body {
 }
 
 .header-font {
-    font-family: 'Playfair Display', Georgia, serif; /* Headlines */
+    font-family: 'Playfair Display', Georgia, serif; 
 }
 
 .label-text {
@@ -72,9 +59,6 @@ body {
     margin-bottom: 0.5rem;
 }
 
-/* ---------------------------------------------------- */
-/* II. PRESENTATION ENGINE STYLES                       */
-/* ---------------------------------------------------- */
 .slide {
     display: none;
     height: 100vh;
@@ -99,9 +83,6 @@ body {
     z-index: 100;
 }
 
-/* ---------------------------------------------------- */
-/*                WEBSITE LAYOUT UTILITIES              */
-/* ---------------------------------------------------- */
 .layout-section { 
     display: none; 
 }
@@ -125,7 +106,6 @@ body {
     gap: 2rem;
 }
 
-/* Content width utilities */
 .content-full {
     grid-column: span 12;
 }
@@ -138,9 +118,6 @@ body {
     grid-column: 4 / span 6;
 }
 
-/* ---------------------------------------------------- */
-/*                BUTTON SYSTEM                         */
-/* ---------------------------------------------------- */
 .btn {
     padding: 12px 28px;
     border-radius: 6px;
@@ -158,7 +135,6 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Button Variants */
 .btn-primary { background-color: var(--color-accent-main); color: white; }
 .btn-secondary { background-color: var(--color-accent-light); color: var(--color-primary); }
 .btn-success { background-color: var(--color-utility-confirmation); color: white; }
@@ -176,7 +152,6 @@ body {
     color: var(--color-bg-primary); 
 }
 
-/* Button Container Styles */
 .container-box {
     padding: 60px;
     border-radius: 12px;
@@ -192,9 +167,6 @@ body {
 .bg-stalactite { background-color: var(--color-bg-primary); }
 .bg-lilac { background-color: var(--color-base-subtle-2); }
 
-/* ---------------------------------------------------- */
-/*        CONTRAST & LEGIBILITY TEST BLOCKS             */
-/* ---------------------------------------------------- */
 .test-block {
     padding: 40px;
     border-radius: 8px;
@@ -202,7 +174,6 @@ body {
     border: 1px solid #B0B7BE;
 }
 
-/* Contrast Combinations */
 .c1 { background-color: var(--color-primary); color: var(--color-bg-primary); }
 .c2 { background-color: var(--color-primary); color: var(--color-accent-light); }
 .c3 { background-color: var(--color-base-subtle-1); color: var(--color-primary); }
@@ -211,9 +182,6 @@ body {
 .c6 { background-color: var(--color-bg-primary); color: var(--color-utility-alert); }
 .c7 { background-color: var(--color-bg-primary); color: var(--color-divider); }
 
-/* ---------------------------------------------------- */
-/*              PROGRESSIVE REVEAL SYSTEM               */
-/* ---------------------------------------------------- */
 .reveal {
     opacity: 0;
     transform: translateY(8px);
@@ -228,7 +196,6 @@ body {
     transition: opacity 0.2s ease;
 }
 
-/* Highlight variants — start visible, gain color on .visible */
 .reveal.highlight {
     opacity: 1;
     transform: none;
@@ -245,9 +212,8 @@ body {
 }
 .reveal.highlight-alert.visible { color: #CA2356; }
 
-/* Composable decoration modifier */
 .underline { text-decoration: underline; }
-.reveal.underline { text-decoration: none; }         /* suppressed until activated */
+.reveal.underline { text-decoration: none; }
 .reveal.underline.visible { text-decoration: underline; }
 
 .reveal.highlight-green {
@@ -258,12 +224,10 @@ body {
 }
 .reveal.highlight-green.visible { color: var(--color-utility-confirmation); }
 
-/* Scale variants */
 .reveal.scale-up   { opacity: 0; transform: scale(1);   transition: opacity 0.3s ease, transform 0.4s ease; }
 .reveal.scale-up.visible   { opacity: 1; transform: scale(1.4); }
 .reveal.scale-down { opacity: 0; transform: scale(1);   transition: opacity 0.3s ease, transform 0.4s ease; }
 .reveal.scale-down.visible { opacity: 1; transform: scale(0.6); }
 
-/* Layout utilities */
-.hstack { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; }
-.vstack { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; }
+.horizontal-stack { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+.vertical-stack { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; }

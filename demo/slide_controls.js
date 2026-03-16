@@ -2,14 +2,14 @@
 current_page_url = window.location.pathname;
 current_filename = current_page_url.substring(current_page_url.lastIndexOf('/') + 1);
 
-slide_number_match = current_filename.match(/presentation_slide_(\d+)\.html/);
+slide_number_match = current_filename.match(/slide_(\d+)\.html/);
 current_slide_number = parseInt(slide_number_match[1]);
 
 previous_slide_number = current_slide_number - 1;
 next_slide_number = current_slide_number + 1;
 
-previous_slide_filename = "presentation_slide_" + previous_slide_number + ".html";
-next_slide_filename = "presentation_slide_" + next_slide_number + ".html";
+previous_slide_filename = "slide_" + previous_slide_number + ".html";
+next_slide_filename = "slide_" + next_slide_number + ".html";
 
 prev_button = document.getElementById("prevBtn");
 next_button = document.getElementById("nextBtn");
@@ -35,53 +35,3 @@ if (current_slide_number === DECK_TOTAL_SLIDES) {
         window.location.href = next_slide_filename;
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

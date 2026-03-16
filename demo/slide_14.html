@@ -18,7 +18,7 @@
 
     <div class="slide active" style="justify-content: center; align-items: center; padding: 2rem 4rem;">
         <div style="width: 100%; overflow: hidden;">
-            <p class="autofit-text header-font font-black text-primary" style="white-space: nowrap; display: block; line-height: 1;"><span style="position: relative; display: inline-block;"><span class="swap-out" style="transition: opacity 0.3s ease;">LOREM</span><span class="reveal swap-in" style="position: absolute; left: 0; top: 0; color: var(--color-accent-main); white-space: nowrap;">IPSUM</span></span></p>
+            <p class="autofit-text header-font font-black text-primary" style="white-space: nowrap; display: block; line-height: 1;">LOREM</p>
         </div>
         <p style="color: var(--color-divider); font-size: 0.85rem; margin-top: 2rem; text-align: center; text-transform: uppercase; letter-spacing: 0.1em;">
             JS scales this text to fill the full slide width
@@ -31,13 +31,11 @@
         <button id="nextBtn" class="btn btn-primary">Next <i class="ph ph-caret-right"></i></button>
     </div>
 
-    <script src="presentation_slide_config.js"></script>
+    <script src="slide_config.js"></script>
     <script src="slide_engine.js"></script>
     <style>
         .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-divider); font-family: 'Inter', sans-serif; }
         aside.notes { display: none; }
-        .swap-out { opacity: 1; }
-        span:has(.swap-in.visible) > .swap-out { opacity: 0; transition: opacity 0.3s ease; }
     </style>
 </body>
 </html>

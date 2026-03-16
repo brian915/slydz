@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 9 — big-number</title>
+    <title>Slide 7 — quote</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link rel="stylesheet" href="main.css">
 </head>
 <body class="bg-primary">
-    <div class="label-overlay">Template: <strong>big-number</strong></div>
+    <div class="label-overlay">Template: <strong>quote</strong></div>
     <!-- Watermark -->
     <div style="position: fixed; top: calc(3.5rem - 10px); left: 2rem; z-index: 150; display: flex; flex-direction: row; align-items: center; gap: 0.4rem; pointer-events: none; opacity: 0.35;">
         <i class="ph ph-presentation" style="font-size: 20px; color: var(--color-divider);"></i>
@@ -18,13 +18,14 @@
 
     <div class="slide active" style="justify-content: center; align-items: center; text-align: center;">
         <div class="editorial-grid" style="width: 100%;">
-            <div class="content-standard" style="text-align: center;">
-                <p class="header-font font-black" style="font-size: 11rem; line-height: 1; color: var(--color-accent-main); margin: 0;"><span style="position: relative; display: inline-block;"><span class="swap-out" style="transition: opacity 0.3s ease;">84%</span><span class="reveal swap-in" style="position: absolute; left: 0; top: 0; color: var(--color-utility-confirmation); white-space: nowrap;">99%</span></span></p>
-                <p class="header-font text-3xl font-bold text-primary" style="margin-top: 1rem;">of lorem ipsum readers prefer dolor sit amet</p>
-                <p style="color: var(--color-divider); margin-top: 1rem; font-size: 0.9rem;">Source: Cicero, De Finibus Bonorum et Malorum, 45 BC</p>
+            <div class="content-narrow" style="text-align: center;">
+                <div style="font-size: 6rem; line-height: 0.5; color: var(--color-accent-main); font-family: Georgia, serif; margin-bottom: 1rem;">&ldquo;</div>
+                <blockquote class="header-font text-4xl font-bold text-primary" style="line-height: 1.4; margin: 0 0 2rem 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</blockquote>
+                <div style="width: 3rem; height: 3px; background: var(--color-accent-main); margin: 0 auto 1.5rem;"></div>
+                <cite style="font-style: normal; color: var(--color-divider); font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase;">— Marcus Lipsum, <em>De Finibus, 45 BC</em></cite>
             </div>
         </div>
-        <aside class="notes">State the stat, then explain what it means for your audience specifically.</aside>
+        <aside class="notes">Let the quote breathe. Read it aloud slowly before moving on.</aside>
     </div>
 
     <div class="slide-nav">
@@ -32,13 +33,11 @@
         <button id="nextBtn" class="btn btn-primary">Next <i class="ph ph-caret-right"></i></button>
     </div>
 
-    <script src="presentation_slide_config.js"></script>
+    <script src="slide_config.js"></script>
     <script src="slide_engine.js"></script>
     <style>
         .label-overlay { position: fixed; top: 1.5rem; left: 2rem; z-index: 200; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-divider); font-family: 'Inter', sans-serif; }
         aside.notes { display: none; }
-        .swap-out { opacity: 1; }
-        span:has(.swap-in.visible) > .swap-out { opacity: 0; transition: opacity 0.3s ease; }
     </style>
 </body>
 </html>
